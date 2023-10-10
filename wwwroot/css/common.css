@@ -1,0 +1,22 @@
+﻿* {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	color: #c17d00;
+}
+
+body {
+	background: #fffee8;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+p, a, h3 {
+	font-family: 'Balsamiq Sans', cursive;
+	font-size: 1.4em;
+}

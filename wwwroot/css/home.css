@@ -1,0 +1,20 @@
+﻿@import "common.css";
+@import "header.css";
+@import "footer.css";
+
+main {
+	display: flex;
+	justify-content: right;
+	background: url(https://bogatyr.club/uploads/posts/2023-03/1679578360_bogatyr-club-p-konfeti-oboi-foni-krasivo-2.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+	main .description {
+		margin: 40px;
+		padding: 30px;
+		border-radius: 15px;
+		height: 100%;
+		background-color: #a2fb90;
+		max-width: 35%;
+	}

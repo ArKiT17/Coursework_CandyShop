@@ -1,0 +1,11 @@
+﻿footer {
+	display: flex;
+	justify-content: center;
+	padding: 20px;
+	background: rgb(255,227,76);
+	background: linear-gradient(135deg, rgba(255,227,76,1) 0%, rgba(152,255,152,1) 100%);
+}
+
+	footer p {
+		color: #1e7354;
+	}

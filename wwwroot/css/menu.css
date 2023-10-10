@@ -1,0 +1,58 @@
+﻿@import "common.css";
+@import "header.css";
+@import "footer.css";
+
+article {
+	padding: 20px 8%;
+}
+
+main {
+	margin: 20px 8%;
+	display: flex;
+	justify-content: center;
+	gap: 40px;
+	flex-wrap: wrap;
+}
+
+.card {
+	width: 300px;
+	border: 3px solid rgb(162, 251, 144);
+	border-radius: 15px;
+	background-color: linen;
+	margin: 20px;
+	padding: 10px;
+	box-shadow: 0 4px 8px 0 rgb(162, 251, 144);
+}
+
+	.card img {
+		max-width: 100%;
+		height: auto;
+		border-radius: 10px;
+	}
+
+	.card h3 {
+		font-size: 20px;
+		margin: 10px 15px;
+	}
+
+.price {
+	font-weight: bold;
+	color: #e74c3c;
+	font-size: 1.1em;
+	margin: 0 15px;
+}
+
+.btn {
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: #42C029FF;
+	color: #fff;
+	text-decoration: none;
+	border-radius: 5px;
+	margin-top: 10px;
+	margin-left: 15px;
+}
+
+	.btn:hover {
+		background-color: #236516;
+	}

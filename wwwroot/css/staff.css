@@ -1,0 +1,41 @@
+﻿@import "common.css";
+@import "header.css";
+@import "footer.css";
+
+article {
+	padding: 20px 8%;
+}
+
+main {
+	margin: 20px 8%;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.card {
+	width: 80%;
+	border: 3px solid rgb(162, 251, 144);
+	border-radius: 15px;
+	background-color: linen;
+	flex-direction: row;
+	display: flex;
+	margin: 20px;
+	padding: 20px;
+	box-shadow: 0 4px 8px 0 rgb(162, 251, 144);
+}
+
+	.card img {
+		width: 25%;
+		height: auto;
+		border-radius: 10px;
+	}
+
+	.card .info {
+		margin: 20px;
+	}
+
+	.card h3 {
+		font-size: 1.5em;
+		margin: 10px 0;
+	}
