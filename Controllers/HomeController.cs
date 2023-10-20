@@ -20,11 +20,11 @@ namespace WebApplication45.Controllers
 		public async Task<IActionResult> Staff() {
 			return View(await db.Staff.ToListAsync());
 		}
-		//public async Task<IActionResult> Cart(bool logedIn) {
-		//	if (logedIn)
-		//		return View(false);
-		//	else
-		//		return View()
-		//}
+		public async Task<IActionResult> Cart(bool logedIn) {
+			if (logedIn)
+				return View(false);
+			else
+				return View(true);
+		}
 	}
 }
