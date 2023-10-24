@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Collections;
 using WebApplication45.Models;
 
 namespace Coursework.DBHelper {
@@ -14,20 +15,37 @@ namespace Coursework.DBHelper {
 			return true;
 		}
 
-		public async Task<Cart> Get(int id) {
+		public IQueryable<Cart> GetAllOfOneClient(int clientId) {
+			return _db.Cart.Where(x => x.ClientId == clientId);
+		}
+
+		public async Task<Cart> GetByIdAsync(int id) {
 			return await _db.Cart.FirstOrDefaultAsync(x => x.Id == id);
 		}
 
-		public async Task<List<Cart>> GetAll() {
-			return await _db.Cart.ToListAsync();
+		public async Task<bool> IncrementCountAsync(Cart cart) {
+			Cart cartItem = await GetByIdAsync(cart.Id);
+			cartItem.Count++;
+			return true;
 		}
 
-		//public bool Edit(Cart cart) {
-
-		//}
+		public async Task<bool> DecrementCountAsync(Cart cart) {
+			Cart cartItem = await GetByIdAsync(cart.Id);
+			if (cartItem.Count == 1)
+				DeleteAsync(cartItem);
+			else
+				cartItem.Count--;
+			return true;
+		}
 
 		public async Task<bool> DeleteAsync(Cart cart) {
 			_db.Cart.Remove(cart);
+			await _db.SaveChangesAsync();
+			return true;
+		}
+
+		public async Task<bool> DeleteAllOfOneClientAsync(int clientId) {
+			_db.Cart.RemoveRange(GetAllOfOneClient(clientId));
 			await _db.SaveChangesAsync();
 			return true;
 		}
