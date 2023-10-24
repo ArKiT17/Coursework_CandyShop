@@ -1,8 +1,9 @@
-﻿using WebApplication45.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Coursework.DBHelper;
 
-namespace WebApplication45 {
-	public class Startup {
+namespace WebApplication45
+{
+    public class Startup {
 		public IConfiguration Configuration { get; }
 		public Startup(IConfiguration configuration) {
 			Configuration = configuration;
