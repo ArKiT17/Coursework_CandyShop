@@ -27,8 +27,8 @@ namespace Coursework.DBHelper {
 
 		//}
 
-		public async Task<bool> DeleteAsync(Item item) {
-			_db.Item.Remove(item);
+		public async Task<bool> DeleteAsync(int id) {
+			_db.Item.Remove(await Get(id));
 			await _db.SaveChangesAsync();
 			return true;
 		}

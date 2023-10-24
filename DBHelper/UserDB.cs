@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Coursework.Models.Account;
+using AspNetCore;
 
 namespace Coursework.DBHelper {
 	public class UserDB {
@@ -26,8 +27,8 @@ namespace Coursework.DBHelper {
 
 		//}
 
-		public async Task<bool> DeleteAsync(User user) {
-			_db.User.Remove(user);
+		public async Task<bool> DeleteAsync(int id) {
+			_db.User.Remove(await Get(id));
 			await _db.SaveChangesAsync();
 			return true;
 		}

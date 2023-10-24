@@ -19,22 +19,28 @@ namespace Coursework.DBHelper {
 			return _db.Cart.Where(x => x.ClientId == clientId);
 		}
 
-		public async Task<Cart> GetByIdAsync(int id) {
+		public async Task<Cart> GetAsync(int id) {
 			return await _db.Cart.FirstOrDefaultAsync(x => x.Id == id);
 		}
 
 		public async Task<bool> IncrementCountAsync(Cart cart) {
-			Cart cartItem = await GetByIdAsync(cart.Id);
+			Cart cartItem = await GetAsync(cart.Id);
 			cartItem.Count++;
 			return true;
 		}
 
 		public async Task<bool> DecrementCountAsync(Cart cart) {
-			Cart cartItem = await GetByIdAsync(cart.Id);
+			Cart cartItem = await GetAsync(cart.Id);
 			if (cartItem.Count == 1)
 				DeleteAsync(cartItem);
 			else
 				cartItem.Count--;
+			return true;
+		}
+
+		public async Task<bool> DeleteAsync(int id) {
+			_db.Cart.Remove(await GetAsync(id));
+			await _db.SaveChangesAsync();
 			return true;
 		}
 
