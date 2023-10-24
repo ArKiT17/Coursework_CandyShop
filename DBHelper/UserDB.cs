@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Coursework.Models.Account;
-using WebApplication45.Models;
 
 namespace Coursework.DBHelper {
 	public class UserDB {
