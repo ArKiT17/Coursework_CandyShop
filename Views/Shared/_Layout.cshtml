@@ -1,0 +1,31 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Кондитерський магазин</title>
+	<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Caveat:wght@700&display=swap"
+		  rel="stylesheet">
+</head>
+<body>
+	<header>
+		<p class="name">Майстерня солодощів</p>
+		<nav>
+			<ul>
+				<li><a href="/Home/Main" class="active1">Головна сторінка</a></li>
+				<li><a href="/Item/Menu" class="active2">Меню</a></li>
+				<li><a href="/Staff/Staff" class="active3">Команда</a></li>
+				<li><a href="/Cart/Cart" class="active4">Кошик</a></li>
+				@if (User.IsInRole("Admin")) {
+					<li><a href="/Admin/Panel" class="active5">Адмінпанель</a></li>
+				}
+			</ul>
+		</nav>
+	</header>
+	<main>
+		@RenderBody()
+	</main>
+	<footer>
+		<p>&#64;2023 Всі права захищені.</p>
+	</footer>
+</body>
+</html>

@@ -2,8 +2,8 @@
 using WebApplication45.Models;
 
 namespace Coursework.Controllers {
-	public class adminController : Controller {
-		public IActionResult Index() {
+	public class AdminController : Controller {
+		public IActionResult Panel() {
 			return View();
 		}
 	}

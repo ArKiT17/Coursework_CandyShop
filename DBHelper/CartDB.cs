@@ -26,17 +26,17 @@ namespace Coursework.DBHelper {
 		public async Task<bool> IncrementCountAsync(Cart cart) {
 			Cart cartItem = await GetAsync(cart.Id);
 			cartItem.Count++;
-			EditAsync(cartItem);
+			await EditAsync(cartItem);
 			return true;
 		}
 
 		public async Task<bool> DecrementCountAsync(Cart cart) {
 			Cart cartItem = await GetAsync(cart.Id);
 			if (cartItem.Count == 1)
-				DeleteAsync(cartItem);
+				await DeleteAsync(cartItem);
 			else {
 				cartItem.Count--;
-				EditAsync(cartItem);
+				await EditAsync(cartItem);
 			}
 			return true;
 		}
