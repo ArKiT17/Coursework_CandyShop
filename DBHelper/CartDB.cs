@@ -26,6 +26,7 @@ namespace Coursework.DBHelper {
 		public async Task<bool> IncrementCountAsync(Cart cart) {
 			Cart cartItem = await GetAsync(cart.Id);
 			cartItem.Count++;
+			EditAsync(cartItem);
 			return true;
 		}
 
@@ -33,9 +34,20 @@ namespace Coursework.DBHelper {
 			Cart cartItem = await GetAsync(cart.Id);
 			if (cartItem.Count == 1)
 				DeleteAsync(cartItem);
-			else
+			else {
 				cartItem.Count--;
+				EditAsync(cartItem);
+			}
 			return true;
+		}
+
+		private async Task<Cart> EditAsync(Cart cart) {
+			Cart oldCart = await GetAsync(cart.Id);
+			oldCart.Count = cart.Count;
+			oldCart.Price = cart.Price;
+			_db.Cart.Update(oldCart);
+			await _db.SaveChangesAsync();
+			return oldCart;
 		}
 
 		public async Task<bool> DeleteAsync(int id) {

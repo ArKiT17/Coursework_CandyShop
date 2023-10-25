@@ -15,7 +15,7 @@ namespace Coursework.DBHelper {
 			return true;
 		}
 
-		public async Task<Item> Get(int id) {
+		public async Task<Item> GetAsync(int id) {
 			return await _db.Item.FirstOrDefaultAsync(x => x.Id == id);
 		}
 
@@ -23,12 +23,18 @@ namespace Coursework.DBHelper {
 			return await _db.Item.ToListAsync();
 		}
 
-		//public bool Edit(Item item) {
-
-		//}
+		public async Task<Item> EditAsync(Item item) {
+			Item oldItem = await GetAsync(item.Id);
+			oldItem.ImagePath = item.ImagePath;
+			oldItem.Name = item.Name;
+			oldItem.Price = item.Price;
+			_db.Item.Update(oldItem);
+			await _db.SaveChangesAsync();
+			return oldItem;
+		}
 
 		public async Task<bool> DeleteAsync(int id) {
-			_db.Item.Remove(await Get(id));
+			_db.Item.Remove(await GetAsync(id));
 			await _db.SaveChangesAsync();
 			return true;
 		}

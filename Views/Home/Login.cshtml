@@ -1,29 +1,13 @@
 ﻿@using WebApplication45.Models;
 
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Панель адміністратора</title>
-	<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Caveat:wght@700&display=swap"
-		  rel="stylesheet">
-	<link rel="stylesheet" href="/css/admin.css">
-</head>
-<body>
-	<header>
-		<p class="name">Панель адміністратора</p>
-	</header>
-	<main>
-		<form method="post">
-			<label for="loogin">Логін</label><br>
-			<input id="login" type="text" placeholder="Введіть логін"><br>
-			<label for="password">Пароль</label><br>
-			<input id="password" type="password" placeholder="Введіть пароль"><br>
-			<input class="btn" type="submit" value="Увійти">
-		</form>
-	</main>
-	<footer>
-		<p>&#64;2023 Всі права захищені.</p>
-	</footer>
-</body>
-</html>
+@{
+	Layout = "_Layout";
+}
+
+<form method="post">
+	<label for="loogin">Логін</label><br>
+	<input id="login" type="text" placeholder="Введіть логін"><br>
+	<label for="password">Пароль</label><br>
+	<input id="password" type="password" placeholder="Введіть пароль"><br>
+	<input class="btn" type="submit" value="Увійти">
+</form>

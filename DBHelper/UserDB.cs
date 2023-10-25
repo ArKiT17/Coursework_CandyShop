@@ -9,7 +9,7 @@ namespace Coursework.DBHelper {
 			_db = db;
 		}
 
-		public async Task<bool> CreateAsync(User user) {
+		public async Task<bool> CreateAsync(User user) {	// додати ViewModel для створення
 			await _db.User.AddAsync(user);
 			await _db.SaveChangesAsync();
 			return true;
