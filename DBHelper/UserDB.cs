@@ -15,11 +15,15 @@ namespace Coursework.DBHelper {
 			return true;
 		}
 
-		public async Task<User> Get(int id) {
+		public async Task<User> GetAsync(int id) {
 			return await _db.User.FirstOrDefaultAsync(x => x.Id == id);
 		}
 
-		public async Task<List<User>> GetAll() {
+		public async Task<User> GetAsync(string login) {
+			return await _db.User.FirstOrDefaultAsync(x => x.Login == login);
+		}
+
+		public async Task<List<User>> GetAllAsync() {
 			return await _db.User.ToListAsync();
 		}
 
@@ -28,7 +32,7 @@ namespace Coursework.DBHelper {
 		//}
 
 		public async Task<bool> DeleteAsync(int id) {
-			_db.User.Remove(await Get(id));
+			_db.User.Remove(await GetAsync(id));
 			await _db.SaveChangesAsync();
 			return true;
 		}

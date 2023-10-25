@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Coursework.DBHelper;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace WebApplication45
 {
@@ -12,11 +13,17 @@ namespace WebApplication45
 			services.AddDbContext<AppDbContext>(options => {
 				options.UseSqlServer(Configuration.GetConnectionString("Default"));
 			});
+			services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+				.AddCookie(options => {
+					options.LoginPath = new PathString("/Account/Login");
+					options.AccessDeniedPath = new PathString("/Account/Login");
+				});
 			services.AddControllersWithViews();
 		}
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
 			app.UseStaticFiles();
 			app.UseRouting();
+			app.UseAuthentication();
 			app.UseAuthorization();
 			app.UseEndpoints(endpoints => {
 				endpoints.MapControllerRoute(
