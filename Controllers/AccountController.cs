@@ -52,10 +52,14 @@ namespace Coursework.Controllers {
 		public async Task<IActionResult> Login(LoginModel model) {
 			if (ModelState.IsValid) {
 				User user = await _userDB.GetAsync(model.Login);
-				if (user == null)
-					return View("Користувача з таким логіном не знайдено");
-				if (user.Password != HasherPassword.HashPassword(model.Password))
-					return View("Неправильний пароль");
+				if (user == null) {
+					ViewBag.LoginErrorMessage = "Користувача не знайдено";
+                    return View(model);
+				}
+				if (user.Password != HasherPassword.HashPassword(model.Password)) {
+					ViewBag.LoginErrorMessage = "Неправильний пароль";
+                    return View(model);
+				}
 				await Authorise(user);
 				return RedirectToAction("Main", "Home");
 			}

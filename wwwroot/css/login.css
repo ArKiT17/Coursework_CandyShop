@@ -9,8 +9,8 @@ main {
     align-items: center;
 }
 
-.title {
-    margin: 20px;
+.title, form {
+    margin-top: 20px;
 }
 
 .non-valid {

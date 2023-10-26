@@ -19,10 +19,10 @@ namespace Coursework.DBHelper {
 		}
 
 		public async Task<User> GetAsync(string login) {
-			return await _db.User.FirstOrDefaultAsync(x => x.Login == login);
+			return await _db.User.FirstOrDefaultAsync(x => (x.Login == login) || (x.Email == login));
 		}
 
-		public async Task<List<User>> GetAllAsync() {
+        public async Task<List<User>> GetAllAsync() {
 			return await _db.User.ToListAsync();
 		}
 
