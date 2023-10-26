@@ -1,26 +1,33 @@
-﻿@using WebApplication45.Models;
+﻿@using Coursework.Models.Account;
+@using WebApplication45.Models;
+@model RegisterModel;
 
 @{
     Layout = "_LoginLayout";
 }
 
 <h3 class="title">Реєстрація</h3>
-<form asp-controller="Account" asp-action="Register">
+<h3 class="non-valid">@ViewBag.LoginIsNotAvailable</h3>
+<form method="post" asp-controller="Account" asp-action="Register">
     <div class="line">
         <label for="login">Логін</label>
-        <input asp-for="Login" id="login" type="text" placeholder="Введіть логін">
+        <span class="non-valid">@Html.ValidationMessageFor(Model => Model.Login)</span>
+        <input name="Login" id="login" type="text" placeholder="Введіть логін">
     </div>
     <div class="line">
         <label for="email">E-mail</label>
-        <input asp-for="Email" id="email" type="email" placeholder="Введіть e-mail">
+        <span class="non-valid">@Html.ValidationMessageFor(Model => Model.Email)</span>
+        <input name="Email" id="email" type="email" placeholder="Введіть e-mail">
     </div>
     <div class="line">
+        <span class="non-valid">@Html.ValidationMessageFor(Model => Model.Password)</span>
         <label for="password">Пароль</label>
-        <input asp-for="Password" id="password" type="password" placeholder="Введіть пароль">
+        <input name="Password" id="password" type="password" placeholder="Введіть пароль">
     </div>
     <div class="line">
         <label for="passwordConfirm">Підтвердження пароля</label>
-        <input asp-for="PasswordConfirm" id="passwordConfirm" type="password" placeholder="Повторіть пароль">
+        <span class="non-valid">@Html.ValidationMessageFor(Model => Model.PasswordConfirm)</span>
+        <input name="PasswordConfirm" id="passwordConfirm" type="password" placeholder="Повторіть пароль">
     </div>
     <input class="btn" type="submit" value="Зареєструватися">
 </form>

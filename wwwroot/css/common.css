@@ -23,7 +23,7 @@ a:hover {
 	text-decoration: underline;
 }
 
-p, a, h3 {
+p, a, h3, span {
 	font-family: 'Balsamiq Sans', cursive;
 	font-size: 1.4em;
 }

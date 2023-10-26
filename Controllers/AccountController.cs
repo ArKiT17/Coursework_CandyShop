@@ -25,8 +25,10 @@ namespace Coursework.Controllers {
 		public async Task<IActionResult> Register(RegisterModel model) {
 			if (ModelState.IsValid) {
 				User user = await _userDB.GetAsync(model.Login);
-				if (user != null)
-					return View("Користувач з таким логіном вже існує");
+				if (user != null) {
+					ViewBag.LoginIsNotAvailable = "Користувач з таким логіном вже існує";
+                    return View(model);
+				}
 				user = new User() {
 					Login = model.Login,
 					Email = model.Email,

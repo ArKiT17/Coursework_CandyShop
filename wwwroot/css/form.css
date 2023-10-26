@@ -1,5 +1,5 @@
 form {
-    width: 30%;
+    width: 35%;
     border: 3px solid rgb(162, 251, 144);
     border-radius: 15px;
     background-color: linen;
@@ -18,6 +18,8 @@ label {
 
 .line {
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 input:not(input[type="submit"]) {
