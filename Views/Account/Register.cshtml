@@ -5,22 +5,22 @@
 }
 
 <h3 class="title">Реєстрація</h3>
-<form action="#" method="post">
+<form asp-controller="Account" asp-action="Register">
     <div class="line">
         <label for="login">Логін</label>
-        <input id="login" type="text" placeholder="Введіть логін">
+        <input asp-for="Login" id="login" type="text" placeholder="Введіть логін">
     </div>
     <div class="line">
         <label for="email">E-mail</label>
-        <input id="email" type="email" placeholder="Введіть e-mail">
+        <input asp-for="Email" id="email" type="email" placeholder="Введіть e-mail">
     </div>
     <div class="line">
         <label for="password">Пароль</label>
-        <input id="password" type="password" placeholder="Введіть пароль">
+        <input asp-for="Password" id="password" type="password" placeholder="Введіть пароль">
     </div>
     <div class="line">
         <label for="passwordConfirm">Підтвердження пароля</label>
-        <input id="passwordConfirm" type="password" placeholder="Повторіть пароль">
+        <input asp-for="PasswordConfirm" id="passwordConfirm" type="password" placeholder="Повторіть пароль">
     </div>
     <input class="btn" type="submit" value="Зареєструватися">
 </form>
