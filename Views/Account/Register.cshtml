@@ -1,5 +1,26 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using WebApplication45.Models;
+
 @{
+    Layout = "_LoginLayout";
 }
+
+<h3 class="title">Реєстрація</h3>
+<form action="#" method="post">
+    <div class="line">
+        <label for="login">Логін</label>
+        <input id="login" type="text" placeholder="Введіть логін">
+    </div>
+    <div class="line">
+        <label for="email">E-mail</label>
+        <input id="email" type="email" placeholder="Введіть e-mail">
+    </div>
+    <div class="line">
+        <label for="password">Пароль</label>
+        <input id="password" type="password" placeholder="Введіть пароль">
+    </div>
+    <div class="line">
+        <label for="passwordConfirm">Підтвердження пароля</label>
+        <input id="passwordConfirm" type="password" placeholder="Повторіть пароль">
+    </div>
+    <input class="btn" type="submit" value="Зареєструватися">
+</form>

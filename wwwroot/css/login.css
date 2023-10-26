@@ -1,0 +1,15 @@
+@import "common.css";
+@import "header.css";
+@import "footer.css";
+@import "form.css";
+
+main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    margin: 20px;
+}
