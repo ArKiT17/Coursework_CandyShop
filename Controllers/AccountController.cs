@@ -29,6 +29,7 @@ namespace Coursework.Controllers {
 					return View("Користувач з таким логіном вже існує");
 				user = new User() {
 					Login = model.Login,
+					Email = model.Email,
 					Role = Role.User,
 					Password = HasherPassword.HashPassword(model.Password)
 				};
