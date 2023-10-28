@@ -11,7 +11,10 @@ namespace Coursework.Controllers {
 
 		[HttpGet]
 		public IActionResult Cart() {
-			return View(_cartDB.GetAllOfOneClient(0));	// змінити клієнта
+			if(!User.Identity.IsAuthenticated) {
+				return RedirectToAction("Login", "Account");
+			}
+			return View(_cartDB.GetAllOfOneClient(0));
 		}
 	}
 }

@@ -6,7 +6,7 @@
 	Layout = "_LoginLayout";
 }
 
-<h3 class="title">Вхід</h3>
+<h3 class="title">Вхід до акаунту</h3>
 <h3 class="title non-valid">@ViewBag.LoginErrorMessage</h3>
 <form action="#" method="post">
     <div class="line">
@@ -20,4 +20,5 @@
         <input name="Password" id="password" type="password" placeholder="Введіть пароль">
     </div>
     <input class="btn" type="submit" value="Увійти">
+    <a class="btn btn-register" href="/Account/Register">Зареєструватися</a>
 </form>

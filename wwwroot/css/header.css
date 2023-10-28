@@ -8,13 +8,6 @@
 	background: linear-gradient(135deg, rgba(255,227,76,1) 0%, rgba(152,255,152,1) 100%);
 }
 
-	header p {
-		font-size: 4.3em;
-		font-family: 'Caveat', cursive;
-		color: #1e7354;
-		margin-top: -10px;
-	}
-
 	header nav {
 		min-width: 60%;
 		margin-top: 20px;
@@ -39,3 +32,16 @@
 					border-radius: 100px;
 					text-decoration: none;
 				}
+
+
+.name {
+	margin-top: -20px;
+}
+
+
+	.name a {
+		font-size: 4.3em;
+		font-family: 'Caveat', cursive;
+		color: #1e7354;
+		text-decoration: none;
+	}

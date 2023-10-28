@@ -21,3 +21,9 @@ main {
 form {
     margin-bottom: 40px;
 }
+
+.btn-register {
+    float: left;
+    color: white;
+    font-size: 1.15em;
+}
