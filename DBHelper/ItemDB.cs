@@ -19,7 +19,7 @@ namespace Coursework.DBHelper {
 			return await _db.Item.FirstOrDefaultAsync(x => x.Id == id);
 		}
 
-		public async Task<List<Item>> GetAll() {
+		public async Task<List<Item>> GetAllAsync() {
 			return await _db.Item.ToListAsync();
 		}
 

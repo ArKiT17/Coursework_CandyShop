@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Coursework.Models.Account;
+@model List<User>
+
+@{
 	Layout = "_AdminLayout";
 }
 
@@ -7,4 +10,35 @@
 		background: #fff100;
 		border-radius: 100px;
 	}
+
+	main {
+		width: 70%;
+	}
+
+	.head-list, .list ul li {
+		grid-template-columns: 10% 20% 30% 10% 16% 14%;
+	}
 </style>
+
+<div class="head-list">
+	<span class="text">ID</span>
+	<span class="text">Логін</span>
+	<span class="text">Пошта</span>
+	<span class="text">Роль</span>
+</div>
+<div class="list">
+	<ul>
+		@foreach (User user in Model) {
+			<li>
+				<span class="text">@user.Id</span>
+				<span class="text">@user.Login</span>
+				<span class="text">@user.Email</span>
+				<span class="text">@user.Role.ToString()</span>
+				@if (user.Login != "admin") {
+					<button class="btn-edit"><span>Редагувати</span></button>
+					<button class="btn-delete"><span>Видалити</span></button>
+				}
+			</li>
+		}
+	</ul>
+</div>

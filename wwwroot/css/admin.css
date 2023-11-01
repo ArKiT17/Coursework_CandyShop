@@ -1,3 +1,82 @@
 ﻿@import "common.css";
 @import "header.css";
 @import "footer.css";
+
+main {
+	width: 60%;
+	margin: auto;
+}
+
+.list {
+	width: 100%;
+	overflow-y: auto;
+}
+
+	.list::-webkit-scrollbar {
+		width: 5px;
+		background: #007bff;
+		border-radius: 5px;
+	}
+
+	.list::-webkit-scrollbar-thumb {
+		background: #007bff;
+		border-radius: 5px;
+	}
+
+	.list::-webkit-scrollbar-track {
+		background: #f0f0f0;
+	}
+
+	.list ul {
+		list-style: none;
+	}
+
+		.list ul li {
+			border: 3px solid rgb(162, 251, 144);
+			margin-bottom: 10px;
+			border-radius: 15px;
+			background-color: linen;
+			box-shadow: 0 2px 5px 0 rgb(162, 251, 144);
+		}
+
+		.head-list, .list ul li {
+			width: 100%;
+			box-sizing: border-box;
+			padding: 10px 20px;
+			display: grid;
+			grid-template-columns: 10% 30% 30% 16% 14%;
+		}
+
+.btn {
+	font-size: 2em;
+	color: blue;
+	border: 3px solid #007bff;
+	border-radius: 500px;
+	height: 50px;
+	width: 50%;
+	margin: 10px auto;
+}
+
+.text {
+	margin: auto 0;
+	font-size: 1.2em;
+}
+
+.btn-edit, .btn-delete {
+	max-height: 100%;
+	min-width: 115px;
+	padding: 4px;
+	margin-left: 5px;
+	border-radius: 50px;
+	color: white;
+}
+
+.btn-edit {
+	background-color: #ff9429;
+	border: 3px solid #e6780b;
+}
+
+.btn-delete {
+	background-color: #ff3030;
+	border: 3px solid #cc1010;
+}

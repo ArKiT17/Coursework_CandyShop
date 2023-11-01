@@ -22,6 +22,12 @@
 		</nav>
 	</header>
 	<main>
+		@if (User.Identity.IsAuthenticated) {
+			<a class="btn-log" href="/Account/LogOut"><span>Вийти</span></a>
+		}
+		else {
+			<a class="btn-log" href="/Account/Login"><span>Увійти</span></a>
+		}
 		@RenderBody()
 	</main>
 	<footer>

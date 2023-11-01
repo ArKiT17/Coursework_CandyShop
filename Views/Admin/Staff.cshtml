@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<Staff>
+
+@{
 	Layout = "_AdminLayout";
 }
 
@@ -7,4 +9,28 @@
 		background: #fff100;
 		border-radius: 100px;
 	}
+
+	.head-list, .list ul li {
+		grid-template-columns: 10% 20% 40% 16% 14%;
+	}
 </style>
+
+<div class="head-list">
+	<span class="text">ID</span>
+	<span class="text">Ім'я</span>
+	<span class="text">Опис</span>
+</div>
+<div class="list">
+	<ul>
+		@foreach (Staff staff in Model) {
+			<li>
+				<span class="text">@staff.Id</span>
+				<span class="text">@staff.Name</span>
+				<span class="text">@staff.Description.Substring(0, 25)...</span>
+				<button class="btn-edit"><span>Редагувати</span></button>
+				<button class="btn-delete"><span>Видалити</span></button>
+			</li>
+		}
+	</ul>
+</div>
+<button class="btn">Додати співробітника</button>

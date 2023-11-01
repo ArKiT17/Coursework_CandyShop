@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<Item>
+
+@{
 	Layout = "_AdminLayout";
 }
 
@@ -8,3 +10,23 @@
 		border-radius: 100px;
 	}
 </style>
+
+<div class="head-list">
+	<span class="text">ID</span>
+	<span class="text">Назва</span>
+	<span class="text">Ціна</span>
+</div>
+<div class="list">
+	<ul>
+		@foreach (Item item in Model) {
+			<li>
+				<span class="text">@item.Id</span>
+				<span class="text">@item.Name</span>
+				<span class="text">@item.Price</span>
+				<button class="btn-edit"><span>Редагувати</span></button>
+				<button class="btn-delete"><span>Видалити</span></button>
+			</li>
+		}
+	</ul>
+</div>
+<button class="btn">Додати товар</button>

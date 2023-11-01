@@ -11,7 +11,7 @@ namespace Coursework.Controllers {
 
 		[HttpGet]
 		public async Task<IActionResult> Menu() {
-			return View(await _itemDB.GetAll());
+			return View(await _itemDB.GetAllAsync());
 		}
 	}
 }

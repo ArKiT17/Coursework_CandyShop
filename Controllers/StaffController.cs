@@ -11,7 +11,7 @@ namespace Coursework.Controllers {
 
 		[HttpGet]
 		public async Task<IActionResult> Staff() {
-			return View(await _staffDB.GetAll());
+			return View(await _staffDB.GetAllAsync());
 		}
 	}
 }
