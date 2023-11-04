@@ -73,7 +73,7 @@ namespace Coursework.Controllers {
 
 		private async Task<bool> Authorise(User user) {
 			var claims = new List<Claim> {
-					new Claim(ClaimsIdentity.DefaultNameClaimType, user.Login),
+					new Claim("id", $"{user.Id}"),
 					new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role.ToString())
 				};
 			var claimsIdentity = new ClaimsIdentity(claims, "ApplicationCookie",

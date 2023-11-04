@@ -1,0 +1,24 @@
+﻿@model Item
+
+<link rel="stylesheet" href="~/css/Modal/item.css">
+
+<form method="@ViewBag.Method" class="card">
+	<div class="card-header">
+		<h3>Інформація про товар</h3>
+	</div>
+	<hr>
+	<div class="card-image">
+		<img class="image" src="@Model.ImagePath" id="image">
+		<input type="text" name="ImagePath" id="link" placeholder="Посилання" value="@Model.ImagePath">
+	</div>
+	<hr>
+	<div class="card-info">
+		<input type="text" name="Id" id="id" placeholder="ID" value="@Model.Id" disabled>
+		<input type="text" name="Name" id="name" placeholder="Назва" value="@Model.Name">
+		<input type="text" name="Price" id="price" placeholder="Ціна" value="@Model.Price">
+	</div>
+	<div class="card-buttons">
+		<button class="btn-close" onclick="closeModal()">Закрити</button>
+		<button class="btn-save" type="submit">Зберегти</button>
+	</div>
+</form>

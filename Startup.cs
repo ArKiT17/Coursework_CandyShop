@@ -16,7 +16,7 @@ namespace WebApplication45
 			services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 				.AddCookie(options => {
 					options.LoginPath = new PathString("/Account/Login");
-					options.AccessDeniedPath = new PathString("/Account/Login");
+					options.AccessDeniedPath = new PathString("/Home/Main");
 				});
 			services.AddControllersWithViews();
 		}

@@ -26,6 +26,7 @@
     <None Include="wwwroot\css\login.css" />
     <None Include="wwwroot\css\menu.css" />
     <None Include="wwwroot\css\staff.css" />
+    <None Include="wwwroot\js\modal.js" />
   </ItemGroup>
 
 </Project>

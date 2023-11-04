@@ -1,4 +1,5 @@
 ﻿using Coursework.DBHelper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication45.Models;
 
@@ -14,36 +15,42 @@ namespace Coursework.Controllers {
 			_userDB = new UserDB(db);
 		}
 
+		[HttpGet]
+		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> Items() {
-			if (!User.IsInRole("Admin"))
-				return RedirectToAction("Main", "Home");
 			return View(await _itemDB.GetAllAsync());
 		}
 
+		[HttpGet]
+		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> Staff() {
-			if (!User.IsInRole("Admin"))
-				return RedirectToAction("Main", "Home");
 			return View(await _staffDB.GetAllAsync());
 		}
 
+		[HttpGet]
+		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> Users() {
-			if (!User.IsInRole("Admin"))
-				return RedirectToAction("Main", "Home");
 			return View(await _userDB.GetAllAsync());
 		}
 
+		[HttpGet]
+		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> News() {
-			if (!User.IsInRole("Admin"))
-				return RedirectToAction("Main", "Home");
 			return View();
 		}
 
-		//private bool isAdmin() {
-		//	if (!User.IsInRole("Admin")) {
-		//		RedirectToAction("Main", "Home");
-		//		return false;
-		//	}
-		//	return true;
-		//}
+		[HttpGet]
+		[Authorize(Roles = "Admin")]
+		public async Task<IActionResult> ModalItem(int id) {
+			return PartialView("ModalItem", await _itemDB.GetAsync(id));
+		}
+
+		[HttpPut]	//update
+		[Authorize(Roles = "Admin")]
+		public async Task<IActionResult> ModalItem(Item item) {
+			await _itemDB.EditAsync(item);
+			ViewBag.Method = "put";
+			return RedirectToAction("Items", "Admin");
+		}
 	}
 }

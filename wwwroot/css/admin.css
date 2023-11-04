@@ -8,8 +8,8 @@ main {
 }
 
 .list {
-	width: 100%;
 	overflow-y: auto;
+	max-height: calc(100vh - 375px);
 }
 
 	.list::-webkit-scrollbar {

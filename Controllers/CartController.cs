@@ -1,4 +1,5 @@
 ﻿using Coursework.DBHelper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Coursework.Controllers {
@@ -10,10 +11,8 @@ namespace Coursework.Controllers {
 		}
 
 		[HttpGet]
+		[Authorize]
 		public IActionResult Cart() {
-			if(!User.Identity.IsAuthenticated) {
-				return RedirectToAction("Login", "Account");
-			}
 			return View(_cartDB.GetAllOfOneClient(0));
 		}
 	}
