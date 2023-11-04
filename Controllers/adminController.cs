@@ -21,6 +21,14 @@ namespace Coursework.Controllers {
 			return View(await _itemDB.GetAllAsync());
 		}
 
+		[HttpPost]  //update
+		[Authorize(Roles = "Admin")]
+		public async Task<IActionResult> Items(Item item) {
+			await _itemDB.EditAsync(item);
+			//ViewBag.Method = "put";
+			return RedirectToAction("Items", "Admin");
+		}
+
 		[HttpGet]
 		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> Staff() {
@@ -43,14 +51,6 @@ namespace Coursework.Controllers {
 		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> ModalItem(int id) {
 			return PartialView("ModalItem", await _itemDB.GetAsync(id));
-		}
-
-		[HttpPut]	//update
-		[Authorize(Roles = "Admin")]
-		public async Task<IActionResult> ModalItem(Item item) {
-			await _itemDB.EditAsync(item);
-			ViewBag.Method = "put";
-			return RedirectToAction("Items", "Admin");
 		}
 	}
 }

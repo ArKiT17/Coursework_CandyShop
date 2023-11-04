@@ -2,7 +2,7 @@
 
 <link rel="stylesheet" href="~/css/Modal/item.css">
 
-<form method="@ViewBag.Method" class="card">
+<form method="post" class="card">
 	<div class="card-header">
 		<h3>Інформація про товар</h3>
 	</div>
@@ -13,7 +13,8 @@
 	</div>
 	<hr>
 	<div class="card-info">
-		<input type="text" name="Id" id="id" placeholder="ID" value="@Model.Id" disabled>
+		<input type="text" name="Id" placeholder="ID" value="@Model.Id" hidden="hidden">
+		<input type="text" name="Id_show" id="id" placeholder="ID" value="@Model.Id" disabled>
 		<input type="text" name="Name" id="name" placeholder="Назва" value="@Model.Name">
 		<input type="text" name="Price" id="price" placeholder="Ціна" value="@Model.Price">
 	</div>
