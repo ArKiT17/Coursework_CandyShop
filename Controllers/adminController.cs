@@ -41,8 +41,44 @@ namespace Coursework.Controllers {
 
 		[HttpGet]
 		[Authorize(Roles = "Admin")]
+		public async Task<IActionResult> ModalItem(int id) {
+			if (id != -1)
+				return PartialView("ModalItem", await _itemDB.GetAsync(id));
+			else
+				return PartialView("ModalItem", new Item());
+		}
+
+		[HttpGet]
+		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> Staff() {
 			return View(await _staffDB.GetAllAsync());
+		}
+
+		[HttpPost]  // add + update
+		[Authorize(Roles = "Admin")]
+		public async Task<IActionResult> Staff(Staff staff) {
+			if (await _staffDB.GetAsync(staff.Id) != null)
+				await _staffDB.EditAsync(staff);
+			else
+				await _staffDB.CreateAsync(staff);
+			return RedirectToAction("Staff", "Admin");
+		}
+
+		[HttpDelete]
+		[Authorize(Roles = "Admin")]
+		public async Task<IActionResult> Staff(int id) {
+			if (await _staffDB.GetAsync(id) != null)
+				await _staffDB.DeleteAsync(id);
+			return Ok();
+		}
+
+		[HttpGet]
+		[Authorize(Roles = "Admin")]
+		public async Task<IActionResult> ModalStaff(int id) {
+			if (id != -1)
+				return PartialView("ModalStaff", await _staffDB.GetAsync(id));
+			else
+				return PartialView("ModalStaff", new Staff());
 		}
 
 		[HttpGet]
@@ -55,15 +91,6 @@ namespace Coursework.Controllers {
 		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> News() {
 			return View();
-		}
-
-		[HttpGet]
-		[Authorize(Roles = "Admin")]
-		public async Task<IActionResult> ModalItem(int id) {
-			if (id != -1)
-				return PartialView("ModalItem", await _itemDB.GetAsync(id));
-			else
-				return PartialView("ModalItem", new Item());
 		}
 
 		[HttpGet]

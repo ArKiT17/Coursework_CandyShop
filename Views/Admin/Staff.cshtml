@@ -28,11 +28,15 @@
 			<li>
 				<span class="text">@staff.Id</span>
 				<span class="text">@staff.Name</span>
-				<span class="text">@staff.Description.Substring(0, 25)...</span>
-				<button class="btn-edit"><span>Редагувати</span></button>
-				<button class="btn-delete"><span>Видалити</span></button>
+				@if (staff.Description.Length > 20) {
+					<span class="text">@staff.Description.Substring(0, 20)...</span>
+				} else {
+					<span class="text">@staff.Description</span>
+				}
+				<button class="btn-edit" onclick="openModal({ url: '/Admin/ModalStaff', id: '@staff.Id' })"><span>Редагувати</span></button>
+				<button class="btn-delete" onclick="openModal({ url: '/Admin/ModalDelete', id: '@staff.Id' })"><span>Видалити</span></button>
 			</li>
 		}
 	</ul>
 </div>
-<button class="btn">Додати співробітника</button>
+<button class="btn" onclick="openModal({ url: '/Admin/ModalStaff', id: '-1' })">Додати співробітника</button>

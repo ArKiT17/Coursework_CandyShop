@@ -46,7 +46,7 @@ function deleteObject(id) {
 		data: { 'id': id },
 		success: function (responce) {
 			modal.innerHTML = ''
-			window.location.href = '/Admin/Items'
+			window.location.href = window.location.href
 		}
 	});
 }
