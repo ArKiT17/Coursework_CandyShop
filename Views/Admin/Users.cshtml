@@ -41,8 +41,8 @@
 				<span class="text">@user.Email</span>
 				<span class="text">@user.Role.ToString()</span>
 				@if (user.Login != "admin") {
-					<button class="btn-edit"><span>Редагувати</span></button>
-					<button class="btn-delete"><span>Видалити</span></button>
+					<button class="btn-edit" onclick="openModal({ url: '/Admin/ModalUser', id: '@user.Id' })"><span>Редагувати</span></button>
+					<button class="btn-delete" onclick="openModal({ url: '/Admin/ModalDelete', id: '@user.Id' })"><span>Видалити</span></button>
 				}
 			</li>
 		}

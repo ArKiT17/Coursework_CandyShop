@@ -1,0 +1,5 @@
+﻿@import "modal.css";
+
+.modal .card {
+	width: 35% !important;
+}

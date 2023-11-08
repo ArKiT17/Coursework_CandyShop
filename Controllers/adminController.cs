@@ -1,4 +1,5 @@
 ﻿using Coursework.DBHelper;
+using Coursework.Models.Account;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication45.Models;
@@ -85,6 +86,28 @@ namespace Coursework.Controllers {
 		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> Users() {
 			return View(await _userDB.GetAllAsync());
+		}
+
+		[HttpPost]  // update
+		[Authorize(Roles = "Admin")]
+		public async Task<IActionResult> Users(User user) {
+			if (await _userDB.GetAsync(user.Id) != null)
+				await _userDB.EditAsync(user);
+			return RedirectToAction("Users", "Admin");
+		}
+
+		[HttpDelete]
+		[Authorize(Roles = "Admin")]
+		public async Task<IActionResult> Users(int id) {
+			if (await _userDB.GetAsync(id) != null)
+				await _userDB.DeleteAsync(id);
+			return Ok();
+		}
+
+		[HttpGet]
+		[Authorize(Roles = "Admin")]
+		public async Task<IActionResult> ModalUser(int id) {
+			return PartialView("ModalUser", await _userDB.GetAsync(id));
 		}
 
 		[HttpGet]

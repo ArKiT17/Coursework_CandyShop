@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\css\Modal\delete.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.11">
@@ -25,8 +29,13 @@
     <None Include="wwwroot\css\home.css" />
     <None Include="wwwroot\css\login.css" />
     <None Include="wwwroot\css\menu.css" />
+    <None Include="wwwroot\css\Modal\delete.css" />
     <None Include="wwwroot\css\staff.css" />
     <None Include="wwwroot\js\modal.js" />
+    <None Include="wwwroot\css\Modal\item.css" />
+    <None Include="wwwroot\css\Modal\modal.css" />
+    <None Include="wwwroot\css\Modal\staff.css" />
+    <None Include="wwwroot\css\Modal\user.css" />
   </ItemGroup>
 
 </Project>

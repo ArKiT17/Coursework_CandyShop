@@ -1,0 +1,29 @@
+﻿@using Coursework.Models.Account;
+@model User
+
+<link rel="stylesheet" href="~/css/Modal/user.css">
+
+<form method="post" class="card">
+	<div class="card-header">
+		<h3>Інформація про користувача</h3>
+	</div>
+	<hr>
+	<div class="card-body">
+		<div class="card-info">
+			<input type="text" name="Id" placeholder="ID" value="@Model.Id" hidden="hidden">
+			<input type="text" name="Id_show" id="id" placeholder="ID" value="@Model.Id" disabled>
+			<input type="text" name="Login" id="login" placeholder="Логін" value="@Model.Login" required>
+		</div>
+		<div class="bottom-info">
+			<input type="email" name="Email" id="email" placeholder="Email" value="@Model.Email" required>
+			<select name="Role">
+				<option value="@Role.User" @(Model.Role == Role.User ? "selected" : "")>Користувач</option>
+				<option value="@Role.Admin" @(Model.Role == Role.Admin ? "selected" : "")>Адміністратор</option>
+			</select>
+		</div>
+	</div>
+	<div class="card-buttons">
+		<button class="btn-close" onclick="closeModal()">Закрити</button>
+		<button class="btn-save" type="submit">Зберегти</button>
+	</div>
+</form>

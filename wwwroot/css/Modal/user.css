@@ -1,0 +1,23 @@
+﻿@import "modal.css";
+
+.modal .card {
+	width: 40%;
+}
+
+.modal .card-info {
+	display: grid;
+	grid-template-columns: 30% 65%;
+	gap: 5%;
+	margin-bottom: 20px;
+}
+
+.modal .bottom-info {
+	display: grid;
+	grid-template-columns: 60% 35%;
+	gap: 5%;
+}
+
+.modal .card-body {
+	display: flex;
+	flex-direction: column;
+}

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Coursework.Models.Account;
+using WebApplication45.Models;
 
 namespace Coursework.DBHelper {
 	public class UserDB {
@@ -8,7 +9,7 @@ namespace Coursework.DBHelper {
 			_db = db;
 		}
 
-		public async Task<bool> CreateAsync(User user) {	// додати ViewModel для створення
+		public async Task<bool> CreateAsync(User user) {
 			await _db.User.AddAsync(user);
 			await _db.SaveChangesAsync();
 			return true;
@@ -26,9 +27,14 @@ namespace Coursework.DBHelper {
 			return await _db.User.ToListAsync();
 		}
 
-		//public bool Edit(User user) {
-
-		//}
+		public async Task<User> EditAsync(User user) {
+			User oldUser = await GetAsync(user.Id);
+			oldUser.Email = user.Email;
+			oldUser.Role = user.Role;
+			_db.User.Update(oldUser);
+			await _db.SaveChangesAsync();
+			return oldUser;
+		}
 
 		public async Task<bool> DeleteAsync(int id) {
 			_db.User.Remove(await GetAsync(id));
