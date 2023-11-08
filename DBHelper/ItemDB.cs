@@ -16,11 +16,16 @@ namespace Coursework.DBHelper {
 		}
 
 		public async Task<Item> GetAsync(int id) {
-			return await _db.Item.FirstOrDefaultAsync(x => x.Id == id);
+			var item = await _db.Item.FirstOrDefaultAsync(x => x.Id == id);
+			return item;
 		}
 
 		public async Task<List<Item>> GetAllAsync() {
 			return await _db.Item.ToListAsync();
+		}
+
+		public int GetLastId() {
+			return _db.Item.Max(item => item.Id);
 		}
 
 		public async Task<Item> EditAsync(Item item) {

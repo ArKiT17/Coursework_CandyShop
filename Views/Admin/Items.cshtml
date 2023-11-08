@@ -4,12 +4,14 @@
 	Layout = "_AdminLayout";
 }
 
-<style>
-	.active1 {
-		background: #fff100;
-		border-radius: 100px;
-	}
-</style>
+@section Styles {
+	<style>
+		.active1 {
+			background: #fff100;
+			border-radius: 100px;
+		}
+	</style>
+}
 
 <div class="head-list">
 	<span class="text">ID</span>
@@ -29,4 +31,4 @@
 		}
 	</ul>
 </div>
-<button class="btn">Додати товар</button>
+<button class="btn" onclick="openModal({ url: '/Admin/ModalItem', id: '-1' })">Додати товар</button>

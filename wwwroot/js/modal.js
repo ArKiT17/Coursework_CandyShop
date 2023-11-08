@@ -23,12 +23,30 @@
 	setTimeout(() => {
 		const link = document.getElementById('link');
 		const image = document.getElementById('image');
-		link.addEventListener('input', function () {
-			image.src = link.value
-		})
+		if (link != null) 
+			link.addEventListener('input', function () {
+				image.src = link.value
+			})
 	}, 200);
 }
 
 function closeModal() {
 	document.getElementById('modal').innerHTML = ''
+}
+
+function deleteObject(id) {
+	if (id === undefined) {
+		alert("Виникла помилка. Перезапустіть сторінку.");
+		return;
+	}
+
+	$.ajax({
+		type: 'DELETE',
+		url: window.location.href,
+		data: { 'id': id },
+		success: function (responce) {
+			modal.innerHTML = ''
+			window.location.href = '/Admin/Items'
+		}
+	});
 }

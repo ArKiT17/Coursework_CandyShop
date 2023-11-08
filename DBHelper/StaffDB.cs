@@ -22,6 +22,10 @@ namespace Coursework.DBHelper {
 			return await _db.Staff.ToListAsync();
 		}
 
+		public int GetLastId() {
+			return _db.Item.Max(item => item.Id);
+		}
+
 		public async Task<Staff> EditAsync(Staff person) {
 			Staff oldPerson = await GetAsync(person.Id);
 			oldPerson.ImagePath = person.ImagePath;

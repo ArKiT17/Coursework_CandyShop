@@ -1,1 +1,12 @@
-﻿
+﻿<link rel="stylesheet" href="~/css/Modal/item.css">
+
+<div class="card">
+	<div class="card-header">
+		<h3>Ви впевнені, що хочете видалити товар?</h3>
+	</div>
+	<hr>
+	<div class="card-buttons">
+		<button class="btn-close" onclick="deleteObject('@Model')">Так</button>
+		<button class="btn-save" onclick="closeModal()">Ні</button>
+	</div>
+</div>

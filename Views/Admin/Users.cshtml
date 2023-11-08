@@ -5,24 +5,26 @@
 	Layout = "_AdminLayout";
 }
 
-<style>
-	.active3 {
-		background: #fff100;
-		border-radius: 100px;
-	}
+@section Styles {
+	<style>
+		.active3 {
+			background: #fff100;
+			border-radius: 100px;
+		}
 
-	main {
-		width: 70%;
-	}
+		main {
+			width: 70%;
+		}
 
-	.head-list, .list ul li {
-		grid-template-columns: 10% 20% 30% 10% 16% 14%;
-	}
+		.head-list, .list ul li {
+			grid-template-columns: 10% 20% 30% 10% 16% 14%;
+		}
 
-	.list {
-		max-height: calc(100vh - 325px);
-	}
-</style>
+		.list {
+			max-height: calc(100vh - 325px);
+		}
+	</style>
+}
 
 <div class="head-list">
 	<span class="text">ID</span>

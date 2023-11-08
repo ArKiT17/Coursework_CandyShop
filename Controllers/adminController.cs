@@ -21,12 +21,22 @@ namespace Coursework.Controllers {
 			return View(await _itemDB.GetAllAsync());
 		}
 
-		[HttpPost]  //update
+		[HttpPost]  // add + update
 		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> Items(Item item) {
-			await _itemDB.EditAsync(item);
-			//ViewBag.Method = "put";
+			if (await _itemDB.GetAsync(item.Id) != null)
+				await _itemDB.EditAsync(item);
+			else
+				await _itemDB.CreateAsync(item);
 			return RedirectToAction("Items", "Admin");
+		}
+
+		[HttpDelete]
+		[Authorize(Roles = "Admin")]
+		public async Task<IActionResult> Items(int id) {
+			if (await _itemDB.GetAsync(id) != null)
+				await _itemDB.DeleteAsync(id);
+			return Ok();
 		}
 
 		[HttpGet]
@@ -50,7 +60,16 @@ namespace Coursework.Controllers {
 		[HttpGet]
 		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> ModalItem(int id) {
-			return PartialView("ModalItem", await _itemDB.GetAsync(id));
+			if (id != -1)
+				return PartialView("ModalItem", await _itemDB.GetAsync(id));
+			else
+				return PartialView("ModalItem", new Item());
+		}
+
+		[HttpGet]
+		[Authorize(Roles = "Admin")]
+		public IActionResult ModalDelete(int id) {
+			return PartialView("ModalDelete", id);
 		}
 	}
 }
