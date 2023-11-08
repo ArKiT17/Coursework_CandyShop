@@ -3,6 +3,7 @@
 }
 
 @section Styles {
+    <link rel="stylesheet" href="~/css/news.css">
 	<style>
 		.active4 {
 			background: #fff100;
@@ -10,3 +11,15 @@
 		}
 	</style>
 }
+
+<form method="post">
+    <div class="line">
+        <label for="header">Заголовок</label>
+        <input name="header" id="header" type="text" placeholder="Введіть заголовок повідомлення">
+    </div>
+    <div class="line second">
+        <label for="news">Зміст</label>
+        <textarea name="news" id="news"></textarea>
+    </div>
+    <input class="btn" type="submit" value="Розіслати">
+</form>

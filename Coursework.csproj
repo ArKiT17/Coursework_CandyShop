@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\css\Modal\delete.css" />
+    <Content Remove="wwwroot\css\news.css" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\css\news.css" />
     <None Include="wwwroot\css\admin.css" />
     <None Include="wwwroot\css\cart.css" />
     <None Include="wwwroot\css\common.css" />

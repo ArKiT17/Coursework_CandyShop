@@ -22,12 +22,17 @@ label {
     flex-direction: column;
 }
 
-input:not(input[type="submit"]) {
-    width: 96%;
+input:not(input[type="submit"]), textarea {
+    width: 100%;
     font-size: 1em;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: none;
 }
 
 .btn {

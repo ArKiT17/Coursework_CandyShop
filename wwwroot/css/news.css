@@ -1,0 +1,54 @@
+﻿@import "common.css";
+@import "header.css";
+@import "footer.css";
+@import "form.css";
+
+main {
+	width: 45%;
+	margin: auto;
+}
+
+form {
+	margin: 20px 0;
+	width: 100%;
+	height: calc(100vh - 300px);
+	box-sizing: border-box;
+}
+
+label, input {
+	font-size: 1.4em;
+	font-weight: bold;
+}
+
+textarea {
+	font-size: 1.2em;
+	height: 100%;
+}
+
+.second {
+	height: calc(100% - 162px);
+}
+
+.btn {
+	padding: 6px 20px 10px;
+	font-size: 2em !important;
+	border-radius: 500px;
+	width: 70% !important;
+	display: block;
+	margin: 10px auto;
+	float: none;
+}
+
+.news-form {
+	margin-top: 20px;
+	border: 1px solid #ccc;
+	padding: 20px;
+	border-radius: 5px;
+}
+
+.form-input {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+	box-sizing: border-box;
+}
