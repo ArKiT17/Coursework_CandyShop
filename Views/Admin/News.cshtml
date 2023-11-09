@@ -12,14 +12,25 @@
 	</style>
 }
 
-<form method="post">
+<form name="news" method="post" onsubmit="submitForm(event)">
     <div class="line">
         <label for="header">Заголовок</label>
-        <input name="header" id="header" type="text" placeholder="Введіть заголовок повідомлення">
+        <input name="Header" id="header" type="text" placeholder="Введіть заголовок повідомлення" required>
     </div>
     <div class="line second">
         <label for="news">Зміст</label>
-        <textarea name="news" id="news"></textarea>
+        <textarea name="Description" id="news" required></textarea>
     </div>
-    <input class="btn" type="submit" value="Розіслати">
+    <input class="btn" type="submit" value="Розіслати" id="sumbit-button">
 </form>
+
+@section Scripts {
+    <script>
+        const button = document.getElementById('sumbit-button')
+        const header = document.getElementById('header')
+        const message = document.getElementById('news')
+        function submitForm(event) {
+            button.disabled = true;
+        }
+    </script>
+}

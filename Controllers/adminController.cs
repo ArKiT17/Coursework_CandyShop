@@ -1,7 +1,10 @@
 ﻿using Coursework.DBHelper;
+using Coursework.Models;
 using Coursework.Models.Account;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Mail;
+using System.Net;
 using WebApplication45.Models;
 
 namespace Coursework.Controllers {
@@ -116,7 +119,32 @@ namespace Coursework.Controllers {
 			return View();
 		}
 
-		[HttpGet]
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> News(News news) {
+			if (news.Header == "" || news.Description == "")
+				return RedirectToAction("News", "Admin"); ;
+            string smtpServer = "smtp.gmail.com";
+            int smtpPort = 587;
+            string smtpUsername = "xxblazexxmax01@gmail.com";
+            string smtpPassword = Password.password;
+            using (SmtpClient smtpClient = new SmtpClient(smtpServer, smtpPort)) {
+                smtpClient.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
+                smtpClient.EnableSsl = true;
+
+				foreach (var user in await _userDB.GetAllAsync()) {
+					MailMessage mail = new MailMessage(smtpUsername, user.Email, news.Header, news.Description);
+					try {
+						smtpClient.Send(mail);
+					} catch (Exception ex) {
+						Console.WriteLine(ex.ToString());
+					}
+				}
+            }
+            return RedirectToAction("News", "Admin");
+        }
+
+        [HttpGet]
 		[Authorize(Roles = "Admin")]
 		public IActionResult ModalDelete(int id) {
 			return PartialView("ModalDelete", id);

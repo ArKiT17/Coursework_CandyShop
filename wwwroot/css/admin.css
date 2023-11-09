@@ -9,18 +9,18 @@ main {
 
 .list {
 	overflow-y: auto;
-	max-height: calc(100vh - 375px);
+	max-height: calc(100vh - 380px);
 }
 
 	.list::-webkit-scrollbar {
-		width: 5px;
-		background: #007bff;
-		border-radius: 5px;
+		width: 8px;
+		background: #42C029FF;
+		border-radius: 50px;
 	}
 
 	.list::-webkit-scrollbar-thumb {
-		background: #007bff;
-		border-radius: 5px;
+		background: #42C029FF;
+		border-radius: 50px;
 	}
 
 	.list::-webkit-scrollbar-track {
@@ -48,14 +48,28 @@ main {
 		}
 
 .btn {
-	font-size: 2em;
-	color: blue;
-	border: 3px solid #007bff;
-	border-radius: 500px;
-	height: 50px;
 	width: 50%;
-	margin: 10px auto;
+	display: block;
+	padding: 10px 20px;
+	background-color: #42C029FF;
+	color: #fff;
+	cursor: pointer;
+	border: none;
+	border-radius: 50px;
+	margin: 15px auto;
+	font-family: 'Balsamiq Sans', cursive;
+	font-size: 1.4em;
 }
+
+	.btn:enabled:hover {
+		text-decoration: underline;
+		background-color: #236516;
+	}
+
+	.btn:disabled {
+		background-color: #a6c79f;
+		cursor: wait;
+	}
 
 .text {
 	margin: auto 0;
