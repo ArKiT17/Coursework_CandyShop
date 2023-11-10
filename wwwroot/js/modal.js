@@ -34,6 +34,11 @@ function closeModal() {
 	document.getElementById('modal').innerHTML = ''
 }
 
+function closeModalReload() {
+	document.getElementById('modal').innerHTML = ''
+	window.location.href = window.location.href
+}
+
 function deleteObject(id) {
 	if (id === undefined) {
 		alert("Виникла помилка. Перезапустіть сторінку.");

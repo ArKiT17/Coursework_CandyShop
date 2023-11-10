@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Coursework.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections;
 using WebApplication45.Models;
 
@@ -15,23 +16,33 @@ namespace Coursework.DBHelper {
 			return true;
 		}
 
-		public IQueryable<Cart> GetAllOfOneClient(int clientId) {
-			return _db.Cart.Where(x => x.ClientId == clientId);
+		public IQueryable<CartViewModel> GetAllOfOneClient(int clientId) {
+			return from cart in _db.Cart
+				   join item in _db.Item on cart.ItemId equals item.Id
+				   where cart.ClientId == clientId
+				   select new CartViewModel {
+					   Id = cart.Id,
+					   ClientId = cart.ClientId,
+					   ImagePath = item.ImagePath,
+					   ItemName = item.Name,
+					   ItemPrice = item.Price,
+					   Count = cart.Count,
+				   };
 		}
 
 		public async Task<Cart> GetAsync(int id) {
 			return await _db.Cart.FirstOrDefaultAsync(x => x.Id == id);
 		}
 
-		public async Task<bool> IncrementCountAsync(Cart cart) {
-			Cart cartItem = await GetAsync(cart.Id);
+		public async Task<bool> IncrementCountAsync(int cartId) {
+			Cart cartItem = await GetAsync(cartId);
 			cartItem.Count++;
 			await EditAsync(cartItem);
 			return true;
 		}
 
-		public async Task<bool> DecrementCountAsync(Cart cart) {
-			Cart cartItem = await GetAsync(cart.Id);
+		public async Task<bool> DecrementCountAsync(int cartId) {
+			Cart cartItem = await GetAsync(cartId);
 			if (cartItem.Count == 1)
 				await DeleteAsync(cartItem);
 			else {
@@ -44,7 +55,6 @@ namespace Coursework.DBHelper {
 		private async Task<Cart> EditAsync(Cart cart) {
 			Cart oldCart = await GetAsync(cart.Id);
 			oldCart.Count = cart.Count;
-			oldCart.Price = cart.Price;
 			_db.Cart.Update(oldCart);
 			await _db.SaveChangesAsync();
 			return oldCart;
@@ -63,7 +73,7 @@ namespace Coursework.DBHelper {
 		}
 
 		public async Task<bool> DeleteAllOfOneClientAsync(int clientId) {
-			_db.Cart.RemoveRange(GetAllOfOneClient(clientId));
+			_db.Cart.RemoveRange(_db.Cart.Where(x => x.ClientId == clientId));
 			await _db.SaveChangesAsync();
 			return true;
 		}

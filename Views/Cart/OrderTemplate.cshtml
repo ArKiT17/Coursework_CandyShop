@@ -1,0 +1,32 @@
+﻿@using Coursework.Models;
+@model List<CartViewModel>
+
+@{
+	float fullprice = 0;
+	foreach (var item in Model) {
+		fullprice += (item.Count * item.ItemPrice);
+	}
+}
+
+<div class="main">
+	<h2>Ваше замовлення прийнято, з Вами зв'яжуться для уточнення даних для доставки</h2>
+	@foreach (var cart in Model) {
+		<div class="element">
+			<img src="@cart.ImagePath" class="element-image">
+			<div class="element-info">
+				<h1>@cart.ItemName</h1>
+				<h2>@cart.ItemPrice</h2>
+			</div>
+			<div class="element-price">
+				<div class="count-item">
+					<button class="element-btn decrement-count"><span>-</span></button>
+					<span class="item-numerator">@cart.Count</span>
+					<button class="element-btn increment-count"><span>+</span></button>
+				</div>
+				<h2 class="price">Разом: @(cart.ItemPrice * cart.Count) грн</h2>
+			</div>
+		</div>
+		<hr>
+	}
+	<h2 class="cart-sum">Всього: <span id="summ">@fullprice</span> грн</h2>
+</div>

@@ -1,0 +1,12 @@
+﻿<link rel="stylesheet" href="~/css/Modal/delete.css">
+
+<div class="card">
+	<div class="card-header">
+		<h3>Ви точно хочете очистити кошик?</h3>
+	</div>
+	<hr>
+	<div class="card-buttons">
+		<button class="btn-close" onclick="deleteCart('@User.FindFirst("id").Value')">Так</button>
+		<button class="btn-save" onclick="closeModal()">Ні</button>
+	</div>
+</div>

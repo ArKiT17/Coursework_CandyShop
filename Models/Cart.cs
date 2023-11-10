@@ -10,7 +10,5 @@ namespace WebApplication45.Models {
 		public int ItemId { get; set; }
 		[Required]
 		public int Count { get; set; }
-		[Required]
-		public int Price { get; set; }
 	}
 }

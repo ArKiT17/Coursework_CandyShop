@@ -10,6 +10,6 @@ namespace WebApplication45.Models
         [Required]
         public string Name { get; set; }
         [Required]
-        public string Price { get; set; }
+        public float Price { get; set; }
     }
 }

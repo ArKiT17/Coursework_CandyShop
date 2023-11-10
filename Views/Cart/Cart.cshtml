@@ -1,5 +1,12 @@
-﻿@{
+﻿@using Coursework.Models;
+@model List<CartViewModel>
+
+@{
 	Layout = "_Layout";
+	float sum = 0;
+	foreach (var item in Model) {
+		sum += (item.Count * item.ItemPrice);
+	}
 }
 
 @section Styles {
@@ -10,4 +17,58 @@
 			border-radius: 100px;
 		}
 	</style>
+}
+
+<div class="main">
+	@if (Model.Count == 0) {
+		<h3>Наразі кошик порожній</h3>
+	}
+	else {
+		@foreach (var cart in Model) {
+			<div class="element">
+				<img src="@cart.ImagePath" class="element-image">
+				<div class="element-info">
+					<h1>@cart.ItemName</h1>
+					<h2>@cart.ItemPrice</h2>
+				</div>
+				<div class="element-price">
+					<div class="count-item">
+						<button class="element-btn decrement-count" onclick="editCount(@cart.Id, false)"><span>-</span></button>
+						<span class="item-numerator" id="numerator-@cart.Id">@cart.Count</span>
+						<button class="element-btn increment-count" onclick="editCount(@cart.Id, true)"><span>+</span></button>
+					</div>
+					<h2 class="price">Разом: @(cart.ItemPrice * cart.Count) грн</h2>
+				</div>
+			</div>
+			<hr>
+		}
+		<div class="cart-footer">
+			<button class="cart-btn delete-btn" onclick="openModuleDelete()">Очистити</button>
+			<h2 class="cart-sum">Всього: @sum грн</h2>
+			<button class="cart-btn order-btn" onclick="makeOrder('@User.FindFirst("id").Value')">Замовити</button>
+		</div>
+	}
+</div>
+
+@section Scripts {
+	@if (Model.Count != 0) {
+		<script src="~/js/cart.js"></script>
+		<script src="~/js/cartAnimations.js"></script>
+		<script src="~/js/modal.js"></script>
+		<script>
+			function editCount(cartId, isIncrement) {
+				$.ajax({
+					type: 'PUT',
+					url: '/Cart/Cart',
+					data: { 'cartId': cartId, 'inc': isIncrement },
+					success: function (responce) {
+						window.location.href = window.location.href
+					},
+					failure: function () {
+						alert('Сталася помилка. Будь ласка, перезагрузіть сторінку.')
+					}
+				});
+			}
+		</script>
+	}
 }
