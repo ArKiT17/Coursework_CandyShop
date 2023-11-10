@@ -19,6 +19,10 @@
 		<img src="@item.ImagePath">
 		<h3>@item.Name</h3>
 		<p class="price">@item.Price</p>
-		<a href="#" class="btn">У кошик</a>
+		<button class="btn" onclick="addItemToCart('@item.Id', '@User.FindFirst("id").Value')">У кошик</button>
 	</div>
+}
+
+@section Scripts {
+	<script src="~/js/cart.js"></script>
 }

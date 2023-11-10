@@ -9,6 +9,6 @@ namespace WebApplication45.Models {
 		[Required]
 		public int ItemId { get; set; }
 		[Required]
-		public int Count { get; set; }
+		public int Count { get; set; } = 1;
 	}
 }

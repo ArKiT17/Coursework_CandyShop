@@ -80,5 +80,12 @@ namespace Coursework.Controllers {
 		public IActionResult ModalDelete() {
 			return PartialView("ModalDelete");
 		}
+
+		[HttpPost]
+		[Authorize]
+		public async Task<IActionResult> AddItem(string itemId, string userId) {
+			await _cartDB.CreateAsync(new Cart() { ItemId = int.Parse(itemId), ClientId = int.Parse(userId) });
+			return Ok();
+		}
 	}
 }

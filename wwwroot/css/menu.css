@@ -43,16 +43,19 @@ main {
 }
 
 .btn {
-	display: inline-block;
+	float: right;
 	padding: 10px 20px;
 	background-color: #42C029FF;
 	color: #fff;
-	text-decoration: none;
-	border-radius: 5px;
-	margin-top: 10px;
-	margin-left: 15px;
+	cursor: pointer;
+	border: none;
+	border-radius: 8px;
+	margin-bottom: 5px;
+	font-family: 'Balsamiq Sans', cursive;
+	font-size: 1.15em;
 }
 
 	.btn:hover {
+		text-decoration: underline;
 		background-color: #236516;
 	}

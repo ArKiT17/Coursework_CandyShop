@@ -6,12 +6,16 @@
 		data: { 'userId': id },
 		success: function (responce) {
 			modal.innerHTML = responce
-			deleteCart(id)
 		},
 		failure: function () {
 			modal.innerHTML = ''
 		}
 	});
+}
+
+function closeModalSender(userId) {
+	document.getElementById('modal').innerHTML = ''
+	deleteCart(userId)
 }
 
 function openModuleDelete() {
@@ -34,7 +38,7 @@ function deleteItem(userId, itemId) {
 		url: '/Cart/Cart',
 		data: { 'userId': userId, 'itemId': itemId },
 		success: function (responce) {
-			window.location.href = url
+			window.location.href = window.location.href
 		},
 		failure: function (responce) {
 			alert('Сталася помилка. Будь ласка, перезагрузіть сторінку.')
@@ -48,7 +52,21 @@ function deleteCart(userId) {
 		url: '/Cart/Cart',
 		data: { 'userId': userId },
 		success: function (responce) {
-			window.location.href = url
+			window.location.href = window.location.href
+		},
+		failure: function (responce) {
+			alert('Сталася помилка. Будь ласка, перезагрузіть сторінку.')
+		}
+	});
+}
+
+function addItemToCart(itemId, userId) {
+	$.ajax({
+		type: 'POST',
+		url: '/Cart/AddItem',
+		data: { 'itemId': itemId, 'userId': userId },
+		success: function (responce) {
+			window.location.href = '/Cart/Cart'
 		},
 		failure: function (responce) {
 			alert('Сталася помилка. Будь ласка, перезагрузіть сторінку.')
