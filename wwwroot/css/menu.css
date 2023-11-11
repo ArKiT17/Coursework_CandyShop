@@ -15,6 +15,9 @@ main {
 }
 
 .card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	width: 300px;
 	border: 3px solid rgb(162, 251, 144);
 	border-radius: 15px;

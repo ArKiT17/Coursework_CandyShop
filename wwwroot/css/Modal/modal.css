@@ -19,7 +19,7 @@
 		font-size: 24px;
 	}
 
-		.modal input[type='text'], .modal input[type='email'], .modal select, .modal textarea {
+		.modal input[type='text'], .modal input[type='email'], .modal input[type='number'], .modal select, .modal textarea {
 			border: none;
 			outline: none;
 			background-color: #D9D9D9;

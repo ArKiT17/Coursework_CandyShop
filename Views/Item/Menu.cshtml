@@ -17,9 +17,11 @@
 @foreach (Item item in Model) {
 	<div class="card">
 		<img src="@item.ImagePath">
-		<h3>@item.Name</h3>
-		<p class="price">@item.Price</p>
-		<button class="btn" onclick="addItemToCart('@item.Id', '@User.FindFirst("id").Value')">У кошик</button>
+		<div class="info">
+			<h3>@item.Name</h3>
+			<p class="price">@item.Price грн</p>
+			<button class="btn" onclick="addItemToCart('@item.Id', '@User.FindFirst("id").Value')">У кошик</button>
+		</div>
 	</div>
 }
 
