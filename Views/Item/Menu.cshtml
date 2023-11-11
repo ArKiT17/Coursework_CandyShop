@@ -20,7 +20,11 @@
 		<div class="info">
 			<h3>@item.Name</h3>
 			<p class="price">@item.Price грн</p>
-			<button class="btn" onclick="addItemToCart('@item.Id', '@User.FindFirst("id").Value')">У кошик</button>
+			@if (User.Identity.IsAuthenticated) {
+				<button class="btn" onclick="addItemToCart('@item.Id', '@User.FindFirst("id").Value')">У кошик</button>
+			} else {
+				<a class="btn" href="/Cart/Cart">У кошик</a>
+			}
 		</div>
 	</div>
 }
