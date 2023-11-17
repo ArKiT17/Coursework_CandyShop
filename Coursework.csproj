@@ -10,6 +10,7 @@
     <Content Remove="wwwroot\css\Modal\delete.css" />
     <Content Remove="wwwroot\css\news.css" />
     <Content Remove="wwwroot\js\cart.js" />
+    <Content Remove="wwwroot\js\noAds.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +35,7 @@
     <None Include="wwwroot\css\menu.css" />
     <None Include="wwwroot\css\Modal\delete.css" />
     <None Include="wwwroot\css\staff.css" />
+    <None Include="wwwroot\js\noAds.js" />
     <None Include="wwwroot\js\cart.js" />
     <None Include="wwwroot\js\modal.js" />
     <None Include="wwwroot\css\Modal\item.css" />
