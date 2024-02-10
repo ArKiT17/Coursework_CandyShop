@@ -16,7 +16,7 @@
 
 @foreach (Item item in Model) {
 	<div class="card">
-		<img src="@item.ImagePath">
+		<img alt="@item.Name" src="@item.ImagePath">
 		<div class="info">
 			<h3>@item.Name</h3>
 			<p class="price">@item.Price грн</p>

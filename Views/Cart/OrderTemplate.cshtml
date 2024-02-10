@@ -12,7 +12,7 @@
 	<h2>Ваше замовлення прийнято, з Вами зв'яжуться для уточнення даних для доставки</h2>
 	@foreach (var cart in Model) {
 		<div class="element">
-			<img src="@cart.ImagePath" class="element-image">
+			<img alt="@cart.ItemName" src="@cart.ImagePath" class="element-image">
 			<div class="element-info">
 				<h1>@cart.ItemName</h1>
 				<h2>@cart.ItemPrice</h2>

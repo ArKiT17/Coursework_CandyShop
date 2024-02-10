@@ -15,7 +15,7 @@
 
 @foreach (Staff person in Model) {
 	<div class="card">
-		<img src="@person.ImagePath">
+		<img alt="@person.Name" src="@person.ImagePath">
 		<div class="info">
 			<h3>@person.Name</h3>
 			<p>@person.Description</p>
