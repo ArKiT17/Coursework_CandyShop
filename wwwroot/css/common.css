@@ -8,6 +8,10 @@ a {
 	color: #c17d00;
 }
 
+center {
+	display: none !important;
+}
+
 body {
 	background: #fffee8;
 	display: flex;

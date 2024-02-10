@@ -84,7 +84,11 @@ namespace Coursework.Controllers {
 		[HttpPost]
 		[Authorize]
 		public async Task<IActionResult> AddItem(string itemId, string userId) {
-			await _cartDB.CreateAsync(new Cart() { ItemId = int.Parse(itemId), ClientId = int.Parse(userId) });
+			var item = await _cartDB.GetByItemAsync(int.Parse(itemId));
+			if (item == null)
+				await _cartDB.CreateAsync(new Cart() { ItemId = int.Parse(itemId), ClientId = int.Parse(userId) });
+			else
+				await _cartDB.IncrementCountAsync(item.Id);
 			return Ok();
 		}
 	}

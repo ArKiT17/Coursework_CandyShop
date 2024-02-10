@@ -34,6 +34,10 @@ namespace Coursework.DBHelper {
 			return await _db.Cart.FirstOrDefaultAsync(x => x.Id == id);
 		}
 
+		public async Task<Cart> GetByItemAsync(int itemId) {
+			return await _db.Cart.FirstOrDefaultAsync(x => x.ItemId == itemId);
+		}
+
 		public async Task<bool> IncrementCountAsync(int cartId) {
 			Cart cartItem = await GetAsync(cartId);
 			cartItem.Count++;
