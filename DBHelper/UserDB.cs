@@ -29,6 +29,7 @@ namespace Coursework.DBHelper {
 
 		public async Task<User> EditAsync(User user) {
 			User oldUser = await GetAsync(user.Id);
+			oldUser.Login = user.Login;
 			oldUser.Email = user.Email;
 			oldUser.Role = user.Role;
 			_db.User.Update(oldUser);
